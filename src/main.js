@@ -1,5 +1,5 @@
-document.getElementById("fact-btn").addEventListener("click", fetchFacts);
-document.getElementById("photo-btn").addEventListener("click", fetchPhotos);
+document.getElementById("fact-btn").addEventListener("click", () => fetchFacts());
+document.getElementById("photo-btn").addEventListener("click", () => fetchPhotos());
 document.getElementById("fact-input").addEventListener("keypress", function (event) {
     if (event.key === "Enter") {
         event.preventDefault();
@@ -18,12 +18,10 @@ function showError(message) {
     errorDiv.textContent = message;
     errorDiv.classList.add("visible");
 }
-
 function hideError() {
     let errorDiv = document.getElementById("error-message");
     errorDiv.classList.remove("visible");
 }
-
 document.querySelectorAll(".cats button").forEach((button, index) => {
     button.addEventListener("click", function () {
         let input = document.querySelectorAll(".cats input")[index];
@@ -32,37 +30,32 @@ document.querySelectorAll(".cats button").forEach((button, index) => {
             showError("Please enter a valid number!");
             return;
         }
-
         hideError();
         if (index === 0) {
-            fetchFacts(value);
+            fetchFacts();
         } else {
-            fetchPhotos(value);
+            fetchPhotos();
         }
     });
 });
-
 async function fetchFacts() {
-    let factInput = document.getElementById("fact-input").value;
+    let factInput = document.getElementById("fact-input").value.trim();
     let factList = document.getElementById("fact-list");
     let photoContainer = document.getElementById("photo-container");
     let spinner = document.getElementById("loading-spinner");
-
-    factList.innerHTML = ""; 
+    factList.innerHTML = "";
     photoContainer.innerHTML = "";
-    spinner.classList.remove("hidden"); 
+    spinner.classList.remove("hidden");
 
     let count = parseInt(factInput);
     if (isNaN(count) || count < 1) count = 1;
-    if (count > 50) count = 50;
-
+    if (count > 50) count == 50;
+    hideError();
     try {
         let response = await fetch(`https://meowfacts.herokuapp.com/?count=${count}`);
         let data = await response.json();
         let facts = data.data;
-
         spinner.classList.add("hidden");
-
         facts.forEach((fact, index) => {
             let listItem = document.createElement("li");
             listItem.textContent = `${index + 1}. ${fact}`;
@@ -73,40 +66,34 @@ async function fetchFacts() {
         spinner.classList.add("hidden");
     }
 }
-
 async function fetchPhotos() {
-    let photoInput = document.getElementById("photo-input").value;
+    let photoInput = document.getElementById("photo-input").value.trim();
     let photoContainer = document.getElementById("photo-container");
     let factList = document.getElementById("fact-list");
     let spinner = document.getElementById("loading-spinner");
-
-    photoContainer.innerHTML = ""; 
+    photoContainer.innerHTML = "";
     factList.innerHTML = "";
     spinner.classList.remove("hidden");
-
     let count = parseInt(photoInput);
     if (isNaN(count) || count < 1) count = 1;
-    if (count > 10) count = 10;
-
+    if (count > 10) count === 10;
+    hideError();
     try {
         let response = await fetch(`https://api.thecatapi.com/v1/images/search?limit=${count}`);
         let data = await response.json();
-
-        spinner.classList.add("hidden"); 
-
+        spinner.classList.add("hidden");
         displayPhotos(data, count);
     } catch (error) {
         console.error("Error fetching cat photos:", error);
         spinner.classList.add("hidden");
     }
 }
-
 function displayPhotos(data, count) {
     let photoContainer = document.getElementById("photo-container");
     data.slice(0, count).forEach(photo => {
         let img = document.createElement("img");
         img.src = photo.url;
-        img.alt = "Cute Cat";
+        img.alt = "cute cat";
         photoContainer.appendChild(img);
     });
 }
