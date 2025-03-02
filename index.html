@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./src/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <title>my cats app</title>
+  </head>
+  <body>
+    <div id="cat-container">
+      <div class="top-div">
+        <div id="error-message" class="hidden"></div>
+        <h1>the cats app</h1>
+        <div class="cats">
+        <div class="facts">
+          <label for="facts">number of cat facts (50 maximum)</label><br>
+          <input type="number" id="fact-input" placeholder="number of cat facts (50 max)">
+          <button id="fact-btn">submit</button>
+        </div>
+        <div class="photos">
+          <label for="facts">number of cat photos (10 max)</label><br>
+          <input type="number" id="photo-input" placeholder="number of cat photos (10 max)">
+          <button id="photo-btn">submit</button>
+        </div>
+        </div>
+      </div>
+      <div class="btm-div">
+        <div id="loading-spinner" class="spinner hidden"></div>
+        <ul id="fact-list"></ul>
+        <div id="photo-container"></div> 
+      </div>
+    </div>
+    <script type="module" src="./src/main.js"></script>
+  </body>
+</html>

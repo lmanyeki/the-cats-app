@@ -1,0 +1,149 @@
+:root {
+  --primary-color: #fad0c4;
+  --secondary-color: #c599b6;
+  --input-color: #c5a1cd;
+  --primary-font: "Roboto", sans-serif;
+  --bottom-color: #fff7f3;
+
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--primary-font);
+}
+
+.cat-container {
+  min-height: 100vh;
+}
+
+.top-div {
+  background-color: var(--primary-color);
+  height: 20rem;
+  width: 100%;
+}
+
+#error-message {
+  background-color: red;
+  color: white;
+  text-align: center;
+  font-size: 1.2rem;
+  padding: 0.8rem;
+  margin-bottom: 1rem;
+}
+
+#error-message.visible {
+  display: block;
+}
+
+.top-div h1 {
+  font-style: bold;
+  font-size: 2.5rem;
+  text-align: center;
+  text-transform: capitalize;
+  padding-top: 2.5rem;
+  padding-bottom: 3rem;
+}
+
+.cats {
+  display: flex;
+  justify-content: center;
+  color: #000;
+  text-transform: capitalize;
+  font-weight: bold;
+  gap: 7rem;
+}
+
+label {
+  color: #000;
+  font-size: 1.3rem;
+}
+
+input {
+  margin-top: 1rem;
+  min-width: 18rem;
+  padding: 1.2rem;
+  text-align: center;
+  justify-content: center;
+  border: none;
+  border-radius: 0.3rem;
+  font-size: 1.2rem;
+  font-weight: 540;  
+  color: #000;
+}
+
+::placeholder {
+  color: var(--input-color);
+  font-style: italic;
+  font-size: 1rem;
+  font-weight: 540;
+}
+
+button {
+  color: var(--bottom-color);
+  background-color: var(--secondary-color);
+  text-transform: capitalize;
+  padding: 1.2rem;
+  border: none;
+  border-radius: 0.3rem;
+  font-size: 1.2rem;
+}
+
+
+.btm-div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  gap: 1rem;
+  background-color: var(--bottom-color);
+  min-height: 50vh;
+}
+
+.spinner {
+  border: 0.8rem solid rgba(0, 0, 0, 0.1);
+  border-left-color: var(--secondary-color);
+  border-right-color: var(--secondary-color);
+  border-top-color: var(--primary-color);
+  border-bottom-color: var(--primary-color);
+  border-radius: 50%;
+  width: 8rem;
+  height: 8rem;
+  animation: spin 1s linear infinite;
+  margin: 2rem auto;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.hidden {
+  display: none;
+}
+
+#fact-list {
+  list-style: none;
+  line-height: 2.5rem;
+  font-size: 1.2rem;
+  font-weight: 350;
+  padding: 0;
+  max-width: 80%;
+}
+
+#photo-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
+
+#photo-container img {
+  width: 25rem;
+  height: 25rem;
+}
+
